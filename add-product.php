@@ -67,11 +67,13 @@ if (isset($_FILES["images"])) {
             continue;
         }
 
-        $fileType = $_FILES["images"]["type"][$key];
+        $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
+$fileType = finfo_file($fileInfo, $tmpName);
+finfo_close($fileInfo);
 
-        if (!in_array($fileType, $allowedTypes)) {
-            continue;
-        }
+if (!in_array($fileType, $allowedTypes, true)) {
+    continue;
+}
 
         $extension = strtolower(
             pathinfo($_FILES["images"]["name"][$key], PATHINFO_EXTENSION)
