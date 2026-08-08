@@ -48,6 +48,8 @@ $productId = $db->lastInsertId();
 
 if (isset($_FILES["images"])) {
 
+error_log("FILES GELDI");
+
     $uploadDir = __DIR__ . "/uploads/products/";
 
     if (!is_dir($uploadDir)) {
@@ -84,6 +86,8 @@ if (!in_array($fileType, $allowedTypes, true)) {
         $destination = $uploadDir . $fileName;
 
         if (move_uploaded_file($tmpName, $destination)) {
+
+error_log("IMAGE UPLOADED: " . $destination);
 
             $imagePath = "uploads/products/" . $fileName;
 
