@@ -48,6 +48,11 @@ $productId = $db->lastInsertId();
 
 if (isset($_FILES["images"])) {
 
+echo "<pre>";
+print_r($_FILES["images"]);
+echo "</pre>";
+exit;
+
 error_log("FILES GELDI");
 
     $uploadDir = __DIR__ . "/uploads/products/";
@@ -359,24 +364,25 @@ error_log("IMAGE UPLOADED: " . $destination);
                 </div>
 
 
-                <div class="form-group">
+<div class="form-group">
 
-                    <label>
-                        Product Image
-                    </label>
+    <label>
+        Product Images
+    </label>
 
-<input
-    type="file"
-    name="images[]"
-    accept="image/jpeg,image/png,image/webp,image/gif"
-    multiple
->
+    <input
+        type="file"
+        name="images[]"
+        accept="image/jpeg,image/png,image/webp,image/gif"
+        multiple
+    >
 
-                    <small class="input-help">
-                        JPG, PNG, WEBP or GIF
-                    </small>
+    <small class="input-help">
+        Bir və ya bir neçə şəkil seçə bilərsən.
+        JPG, PNG, WEBP və GIF.
+    </small>
 
-                </div>
+</div>
 
 
                 <div class="form-group">
